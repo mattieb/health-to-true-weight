@@ -13,7 +13,7 @@ def check_body_mass(record_elem):
 
         assert attrs['unit'] == 'lb'
         pounds = Decimal(attrs['value'])
-        grams = pounds * 454
+        grams = pounds * Decimal('453.59237')
 
         print('{}, {}'.format(date, grams))
 
@@ -33,7 +33,7 @@ class Handler(xml.sax.handler.ContentHandler):
 
 if __name__ == '__main__':
     import sys
-    assert len(sys.argv) == 1
+    assert len(sys.argv) == 2
 
     parser = xml.sax.make_parser()
     parser.setContentHandler(Handler())
